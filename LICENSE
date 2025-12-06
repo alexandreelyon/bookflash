@@ -1,24 +1,130 @@
-This is free and unencumbered software released into the public domain.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>BookFlash_ – E-books de Nicho que Explodem sua Mente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+<header class="hero">
+  <div class="container">
+    <h1>Leia <strong>mais</strong>. Gaste <strong>menos</strong>.</h1>
+    <p>+300 e-books de nichos quentes: sedução, cripto, fitness, magia, apostas… cada um pelo preço de um café.</p>
+    <a href="#catalogo" class="btn pulse">Explodir minha mente →</a>
+  </div>
+</header>
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+<section id="catalogo" class="catalogo">
+  <h2>Escolha seu veneno</h2>
+  <div class="grid" id="grid"></div>
+</section>
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+<section class="checkout">
+  <div class="container">
+    <h2>Bundle Completo</h2>
+    <p>Pague apenas <strong>R$ 97</strong> e leve TODOS (economize +R$ 1.500).</p>
+    <button class="btn" onclick="abrirPagamento()">Comprar Agora</button>
+  </div>
+</section>
 
-For more information, please refer to <https://unlicense.org>
+<script src="script.js"></script>
+</body>
+</html>
+
+
+style.css
+
+:root{
+  --bg: #0d0d0d;
+  --accent: #ffdd00;
+  --text: #f5f5f5;
+  --radius: 6px;
+  --font: 'Inter', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:var(--font)}
+body{background:var(--bg);color:var(--text)}
+.container{width:90%;max-width:1000px;margin:auto}
+.btn{display:inline-block;padding:.9rem 1.8rem;background:var(--accent);color:#000;border:none;border-radius:var(--radius);font-weight:700;cursor:pointer}
+.pulse{animation:pulse 2s infinite}@keyframes pulse{50%{box-shadow:0 0 0 .4rem rgba(255,221,0,.5)}}
+.hero{padding:10vh 0;text-align:center}
+.hero h1{font-size:clamp(2rem,5vw,3rem)}
+.hero p{margin:1rem 0 2rem;color:#aaa}
+.catalogo{padding:8vh 0}
+.grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.card{background:#151515;border-radius:var(--radius);overflow:hidden;text-align:center}
+.card img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.card h3{margin:.8rem 0;font-size:1.1rem}
+.card .btn{width:100%}
+.checkout{background:#151515;padding:8vh 0;text-align:center}
+
+
+script.js
+
+const produtos = [
+  {id:'s01',nome:'Sedução em 7 Passos',cat:'sedução',img:'https://picsum.photos/200/300?random=1'},
+  {id:'c01',nome:'Bitcoin de 0 a 100',cat:'cripto',img:'https://picsum.photos/200/300?random=2'},
+  {id:'f01',nome:'Keto 14 Dias',cat:'fitness',img:'https://picsum.photos/200/300?random=3'},
+  {id:'m01',nome:'Magia com Cartas',cat:'magia',img:'https://picsum.photos/200/300?random=4'},
+  {id:'a01',nome:'Back Lay Sniper',cat:'apostas',img:'https://picsum.photos/200/300?random=5'},
+  // adicione mais objetos aqui
+];
+
+const grid = document.getElementById('grid');
+produtos.forEach(p=>{
+  grid.innerHTML += `
+    <div class="card">
+      <img src="${p.img}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <button class="btn" onclick="comprar('${p.id}')">R$ 9,90</button>
+    </div>`;
+});
+
+function comprar(id){ window.open(`https://pagamento.com/pix/${id}`, '_blank') }
+function abrirPagamento(){ window.open('https://pagamento.com/pix/bundle','_blank') }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
